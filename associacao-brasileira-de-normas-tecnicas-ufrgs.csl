@@ -51,7 +51,7 @@
             <name-part name="family" text-case="uppercase"/>
             <name-part name="given" text-case="capitalize-first"/>
           </name>
-          <et-al prefix=" " font-style="italic"/>
+          <et-al font-style="italic"/>
           <label form="short" prefix=" (" suffix=".)" text-case="capitalize-first"/>
           <substitute>
             <names variable="editor"/>
@@ -81,7 +81,7 @@
         <name-part name="given" text-case="capitalize-first"/>
         <name-part name="family" text-case="capitalize-first"/>
       </name>
-      <et-al prefix=" " font-style="italic"/>
+      <et-al font-style="italic"/>
     </names>
   </macro>
   <!-- A macro 'author' e responsável por mostrar os nomes dos autores na bibliografia. Serão no
@@ -95,7 +95,7 @@
         <name-part name="family" text-case="uppercase"/>
         <name-part name="given" text-case="capitalize-all"/>
       </name>
-      <et-al prefix=" " font-style="italic"/>
+      <et-al font-style="italic"/>
       <label form="short" prefix=" (" suffix=".)" text-case="capitalize-first"/>
       <substitute>
         <names variable="editor"/>
@@ -119,7 +119,7 @@
         <!-- <name-part name="family" text-case="lowercase" font-variant="small-caps"/> -->
         <name-part name="given" text-case="capitalize-all"/>
       </name>
-      <et-al prefix=" " font-style="italic"/>
+      <et-al font-style="italic"/>
       <substitute>
         <names variable="editor"/>
         <names variable="translator"/>
@@ -155,12 +155,12 @@
   <macro name="title">
     <choose>
       <if match="any" type="chapter bill webpage post-weblog article-newspaper article-magazine    article-journal motion_picture paper-conference speech">
-        <text variable="title" text-case="sentence"/>
+        <text variable="title"/>
       </if>
       <else-if match="any" type="entry-encyclopedia entry-dictionary">
         <choose>
           <if match="any" variable="author editor collection-editor translator">
-            <text variable="title" text-case="sentence"/>
+            <text variable="title"/>
           </if>
           <else>
             <text variable="title" text-case="uppercase"/>
@@ -168,7 +168,7 @@
         </choose>
       </else-if>
       <else>
-        <text variable="title" font-weight="bold" text-case="sentence"/>
+        <text variable="title" font-weight="bold"/>
       </else>
     </choose>
   </macro>
@@ -176,10 +176,10 @@
   <macro name="container-title">
     <choose>
       <if type="paper-conference speech" match="any">
-        <text variable="container-title" text-case="sentence"/>
+        <text variable="container-title"/>
       </if>
       <else>
-        <text variable="container-title" font-weight="bold" text-case="sentence"/>
+        <text variable="container-title" font-weight="bold"/>
       </else>
     </choose>
   </macro>
@@ -371,11 +371,11 @@
       </else-if>
     </choose>
   </macro>
- <!--Mostra a ISBN-->
+  <!--Mostra a ISBN-->
   <macro name="ISBN">
     <text variable="ISBN" prefix="ISBN "/>
   </macro>
- <!-- Anotações (campo "extra") -->
+  <!-- Anotações (campo "extra") -->
   <macro name="extra">
     <choose>
       <!-- speech usa campo Extra para instituição ou editor -->
@@ -436,8 +436,8 @@
     </layout>
   </citation>
   <!-- BIBLIOGRAFIA 
-  et al. aparece a partir de 4 autores -->
-  <bibliography hanging-indent="false" et-al-min="4" et-al-use-first="1" entry-spacing="1" subsequent-author-substitute="______." subsequent-author-substitute-rule="complete-all">
+  et al. aparece a partir de 4 autores. Mesmos autores subsequentes são substituídos por 6 sublinhas -->
+  <bibliography hanging-indent="false" et-al-min="4" et-al-use-first="1" entry-spacing="1" subsequent-author-substitute="______" subsequent-author-substitute-rule="partial-each">
     <sort>
       <key macro="author"/>
       <!-- Organiza primeiro pela ordem de autor -->
